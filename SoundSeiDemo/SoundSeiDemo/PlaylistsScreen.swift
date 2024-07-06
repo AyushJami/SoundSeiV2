@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct PlaylistsScreen: View {
+struct PlaylistsScreen: View { // Define the playlists screen view of the app
     var body: some View {
-        ZStack {
+        ZStack { // Use a ZStack to layer the background color and the text
             Color("CustomColor").ignoresSafeArea(.all)
-            Text("Playlists Screen")
+            Text("Playlists Screen") // Display a text label with the string "Playlists Screen"
         }
     }
 }
