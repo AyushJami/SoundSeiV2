@@ -2,16 +2,15 @@
 //  SoundSeiDemoApp.swift
 //  SoundSeiDemo
 //
-//  Created by Angela Xu on 3/6/24.
 //
 
 import SwiftUI
 
-@main
+@main // Define the main entry point of the SwiftUI application
 struct SoundSeiDemoApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        WindowGroup { // Create a window group to manage the app's scenes
+            ContentView() // Set the initial view of the app to ContentView
         }
     }
 }
