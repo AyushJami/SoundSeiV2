@@ -2,21 +2,18 @@
 //  ContentView.swift
 //  SoundSeiDemo
 //
-//  Created by Angela Xu on 3/6/24.
 //
-
 import SwiftUI
 
-
-
+// Define the main content view of the app
+// When app is first opened, you see the logo and tap to land on the music screen
 struct ContentView: View {
-    
     var body: some View {
         NavigationView{
-            ZStack {
+            ZStack { // Use a ZStack to layer the background color and the navigation link
                 Color("CustomColor").ignoresSafeArea(.all)
-                NavigationLink(destination: MainScreen().navigationBarBackButtonHidden(true)) {
-                    Image("SoundseiLogo").resizable()
+                NavigationLink(destination: MainScreen().navigationBarBackButtonHidden(true)) { // Create a link to navigate to MainScreen when the image is tapped
+                    Image("SoundseiLogo").resizable() // Logo that is shown with app is first opened
                         .frame(width: 400.0, height: 350.0)
                 }
             }
