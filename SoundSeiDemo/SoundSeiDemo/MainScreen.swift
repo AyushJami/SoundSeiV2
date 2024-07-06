@@ -2,7 +2,6 @@
 //  MainScreen.swift
 //  SoundSeiDemo
 //
-//  Created by Angela Xu on 3/24/24.
 //
 
 import SwiftUI
