@@ -2,30 +2,29 @@
 //  TrackWindow.swift
 //  SoundSeiDemo
 //
-//  Created by Angela Xu on 5/19/24.
 //
 
 import Foundation
 import SwiftUI
 
-struct TrackWindow: View {
-    @ObservedObject var audioController = AudioController()
-    var audioFileName: String
-    var imageName: String
-    @State private var isShowingPopup = false
+struct TrackWindow: View { // Define a view to display a track window with audio controls
+    @ObservedObject var audioController = AudioController() // object to control audio playback
+    var audioFileName: String // Name of the audio file to be played
+    var imageName: String // Name of the image associated with the track
+    @State private var isShowingPopup = false // State variable to control popup visibility
     @State private var selectedPlaybackTime = 60.0 // Default selected playback time
     
     var body: some View {
             ZStack {
                 VStack {
-                    Image(imageName)
+                    Image(imageName) // Display the image associated with the track
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .padding()
                     
                     HStack {
                         Button(action: {
-                            //add button action
+                            // button functionality for adding to playlist to be added in later
                         }) {
                             Image("add_icon")
                                 .resizable()
@@ -36,7 +35,7 @@ struct TrackWindow: View {
                         
                         Spacer()
                         
-                        Button(action: {
+                        Button(action: { // Button to play or pause the audio
                             if audioController.isPlaying {
                                 audioController.stopSound()
                             } else {
@@ -52,7 +51,7 @@ struct TrackWindow: View {
                         
                         Spacer()
                         
-                        Button(action: {
+                        Button(action: { // Button to show the playback time adjustment popup
                             isShowingPopup.toggle() // Toggle popup visibility
                         }) {
                             Image("clock_icon")
@@ -67,11 +66,13 @@ struct TrackWindow: View {
                     
                 }
                 
+                // Popup for adjusting playback time, shown when isShowingPopup is true
                 if isShowingPopup {
                     Color.black.opacity(0.4)
                         .edgesIgnoringSafeArea(.all) // Background dimming
                         .transition(.opacity)
                     
+                    // TimeSlider view for adjusting playback time
                     TimeSlider(audioController: audioController, isShowingPopup: $isShowingPopup, selectedPlaybackTime: $selectedPlaybackTime)
                         .frame(width: 300, height: 200) // Size of the popup
                         .background(Color.white)
