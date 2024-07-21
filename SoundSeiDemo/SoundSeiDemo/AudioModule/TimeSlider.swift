@@ -42,9 +42,9 @@ struct TimeSlider: View { // Define a view to display a time slider for modifyin
             // Format the time string based on minutes and seconds
             if minutes > 0 {
                 return String(format: "%02d:%02d", minutes, seconds) // Format as mm:ss if minutes are greater than 0
-        } else {
-            } else {
-                return String(format: "%02d", seconds) // Format as ss if only seconds are present
+        }
+        else {
+            return String(format: "%02d", seconds) // Format as ss if only seconds are present
             }
         }
 }
