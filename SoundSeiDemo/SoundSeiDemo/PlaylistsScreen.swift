@@ -11,6 +11,8 @@ struct PlaylistsScreen: View { // Define the playlists screen view of the app
     
     @ObservedObject var viewModel = PlaylistViewModel()
     @State private var isRowSelected = false
+    
+        // test comment
         
         var body: some View {
             NavigationView {
