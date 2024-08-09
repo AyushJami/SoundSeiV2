@@ -12,6 +12,7 @@ struct TrackWindow: View { // Define a view to display a track window with audio
     var audioFileName: String // Name of the audio file to be played
     var imageName: String // Name of the image associated with the track
     @State private var isShowingPopup = false // State variable to control popup visibility
+    @State private var isShowingAddOptions = false
     @State private var selectedPlaybackTime = 60.0 // Default selected playback time
     
     var body: some View {
@@ -20,11 +21,21 @@ struct TrackWindow: View { // Define a view to display a track window with audio
                     Image(imageName) // Display the image associated with the track
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .clipShape(RoundedRectangle(cornerRadius: 15)) // Clip the image to have rounded corners
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(Color("CustomColor"), lineWidth: 4) // Add a border with rounded corners
+                        )
+//                        .cornerRadius(15)
+//                        .border(Color("CustomColor"), width: 6)
+                        .offset(y: -100)
                         .padding()
+                        
                     
                     HStack {
                         Button(action: {
                             // button functionality for adding to playlist to be added in later
+                            isShowingAddOptions = true;
                         }) {
                             Image("add_icon")
                                 .resizable()
@@ -80,6 +91,20 @@ struct TrackWindow: View { // Define a view to display a track window with audio
                         .shadow(radius: 10)
                         .transition(.scale)
                 }
+            }
+            .actionSheet(isPresented: $isShowingAddOptions) {
+                ActionSheet(
+                    title: Text("Add to Playlist"),
+                    buttons: [
+                        .default(Text("Existing Playlist")) {
+                            // Logic for adding to existing playlist
+                        },
+                        .default(Text("New Playlist")) {
+                            // Logic for creating a new playlist
+                        },
+                        .cancel()
+                    ]
+                )
             }
         }
 }

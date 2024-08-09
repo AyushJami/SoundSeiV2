@@ -20,7 +20,8 @@ struct MainScreen: View {
                 PlaylistsScreen().tabItem { // Third tab: PlaylistsScreen - list of playlists created from Music & Sounds that the user puts together
                     Label("Playlists", image: "PlaylistsTab")
                 }
-            }.accentColor(Color.white)
+            }
+//            .accentColor(Color.white)
         }
     }
 }
